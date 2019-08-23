@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div>
-        <h3 className='bg-danger text-white'>
-          <i className={this.props.icon} />
-          {this.props.title}
-        </h3>
-      </div>
-    );
-  }
-}
+const Navbar = props => {
+  return (
+    <div>
+      <h3 className='bg-danger text-white'>
+        <i className={props.icon} />
+        {props.title}
+      </h3>
+    </div>
+  );
+};
 
 export default Navbar;
