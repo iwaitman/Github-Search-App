@@ -1,13 +1,15 @@
 import React from 'react';
+import Search from './Search';
 
 const Navbar = props => {
   return (
-    <div>
-      <h3 className='bg-danger text-white'>
+    <nav className='navbar bg-danger mb-4'>
+      <a className='navbar-brand text-white' href='/'>
         <i className={props.icon} />
         {props.title}
-      </h3>
-    </div>
+      </a>
+      <Search searchUsers={props.searchUsers} />
+    </nav>
   );
 };
 
