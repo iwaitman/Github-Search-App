@@ -8,7 +8,7 @@ const Navbar = props => {
         <i className={props.icon} />
         {props.title}
       </a>
-      <Search searchUsers={props.searchUsers} />
+      <Search searchUsers={props.searchUsers} setAlert={props.setAlert} />
     </nav>
   );
 };

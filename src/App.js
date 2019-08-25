@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Navbar from './components/layout/Navbar';
 import Users from './components/user/Users';
 import axios from 'axios';
+import Alert from './components/layout/Alert';
 
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   // Connect to Github API
@@ -35,6 +37,12 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false });
   };
 
+  // Alert if no text entered
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg: msg, type: type } });
+    setTimeout(() => this.setState({ alert: null }), 5000);
+  };
+
   render() {
     return (
       <div className='App'>
@@ -42,8 +50,10 @@ class App extends Component {
           title='Github Finder'
           icon='fab fa-github px-2'
           searchUsers={this.searchUsers}
+          setAlert={this.setAlert}
         />
         <div className='container'>
+          <Alert alert={this.state.alert} />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>

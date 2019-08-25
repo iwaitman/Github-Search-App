@@ -7,13 +7,18 @@ export class Search extends Component {
   };
 
   static propTypes = {
-    searchUsers: PropTypes.func.isRequired
+    searchUsers: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.searchUsers(this.state.text);
-    this.setState({ text: '' });
+    if (this.state.text === '') {
+      this.props.setAlert('Oops, you forgot to type something!', 'warning');
+    } else {
+      this.props.searchUsers(this.state.text);
+      this.setState({ text: '' });
+    }
   };
 
   onChange = e => {
